@@ -40,7 +40,7 @@ AddLevel(LEVELTYPE.SURVIVAL, {
         spawnprotection = "never",
         extrastartingitems = "none",
         seasonalstartingitems = "never",
-        specialevent = "none",
+        -- specialevent = "none",
 
         -- DERANDOMIZATION: SETPIECES
         boons = "never",
@@ -58,7 +58,7 @@ AddLevel(LEVELTYPE.SURVIVAL, {
         --		grass = "often", 
         --		sapling = "often", 
         --		basicresource_regrowth = "always", 
-        regrowth = "veryslow",
+        -- regrowth = "veryslow",
         --		twiggytrees_regrowth = "never", 
 
         -- OCEAN ITEMS
@@ -70,8 +70,8 @@ AddLevel(LEVELTYPE.SURVIVAL, {
         hounds = "always",
         krampus = "always",
         liefs = "always",
-        pirateraids = "rare",
-        squid = "always"
+        pirateraids = "rare"
+        -- squid = "always"
     }
 })
 
