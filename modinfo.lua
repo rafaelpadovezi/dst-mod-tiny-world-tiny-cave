@@ -1,12 +1,19 @@
-version = "0.9"
+version = "1.0"
 
 description = [[
-    My Tiny, Tiny World (III)
+A tiny world with a tiny cave.
+
+It's a small map without a bunch of biomes, making it smaller.
+
+Based on https://steamcommunity.com/sharedfiles/filedetails/?id=3432825919
 ]]
 
-name = "My Tiny, Tiny World (III)"
+name = "Tiny World With Tiny Cave"
 author = "rafaelpadovezi"
 
 api_version = 10
 dst_compatible = true
 all_clients_require_mod = true
+
+icon_atlas = "modicon.xml"
+icon = "modicon.tex"
