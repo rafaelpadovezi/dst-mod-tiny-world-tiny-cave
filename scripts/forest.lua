@@ -114,7 +114,7 @@ end)
 FixRoom("Rocky", function(self)
     self.required_prefabs = {"resurrectionstone", "moon_altar_rock_idol"}
     self.contents.countstaticlayouts = RetreatSetpiece "ResurrectionStone"
-    self.contents.countprefabs.meteorspawner = 1
+    self.contents.countprefabs.meteorspawner = null
     self.contents.countprefabs.flint = 3
     self.contents.countprefabs.moon_altar_rock_idol = 1
     self.contents.countprefabs.rock2 = 5

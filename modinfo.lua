@@ -1,4 +1,4 @@
-version = "1.0.2"
+version = "1.0.3"
 
 description = [[
 A tiny world with a tiny cave.
