@@ -97,16 +97,17 @@ IncludeTask("Dig that rock", function(self)
     }
 end)
 
-RetreatSetpiece "Charlie1"
-RetreatSetpiece "Charlie2"
-Layouts.Charlie2.layout_position = LAYOUT_POSITION.RANDOM
+-- RetreatSetpiece "Charlie1"
+-- RetreatSetpiece "Charlie2"
+-- Layouts.Charlie2.layout_position = LAYOUT_POSITION.RANDOM
 
 FixRoom("Graveyard", function(self)
     self.contents.countstaticlayouts = {
-        Charlie1 = 1,
-        Charlie2 = 1
+        -- Charlie1 = 1,
+        -- Charlie2 = 1
     }
     self.contents.countprefabs.molehill = 3
+    self.contents.countprefabs.gravestone = 10
     --	self.contents.countprefabs.cave_entrance = 1
     --	self.contents.countprefabs.wormhole_MARKER = 1
 end)
@@ -115,18 +116,16 @@ FixRoom("Rocky", function(self)
     self.required_prefabs = {"resurrectionstone", "moon_altar_rock_idol"}
     self.contents.countstaticlayouts = RetreatSetpiece "ResurrectionStone"
     self.contents.countprefabs.meteorspawner = null
-    self.contents.countprefabs.flint = 3
+    self.contents.countprefabs.flint = 5
     self.contents.countprefabs.moon_altar_rock_idol = 1
-    self.contents.countprefabs.rock2 = 5
+    self.contents.countprefabs.rock2 = 7
     self.contents.countprefabs.rock_flintless = 9
     self.contents.distributeprefabs.rock_ice = nil
     self.contents.countprefabs.burntground_faded = nil
 end)
 
 FixRoom("CritterDen", function(self)
-    self.required_prefabs = {"terrariumchest", "oceantreenut"}
     self.contents.countprefabs.flint = 1
-    self.contents.countstaticlayouts = RetreatSetpiece "Terrarium_Forest_Spiders"
     self.contents.countprefabs.oceantreenut = 1
 end)
 
@@ -207,7 +206,8 @@ IncludeTask("For a nice walk", function(self)
     self.room_choices = {
         MandrakeHome = 1,
         BeefalowPlain = 1,
-        DeepForest = 1
+        DeepForest = 1,
+        Forest = 1
     }
 end)
 
@@ -237,7 +237,7 @@ FixRoom("BeefalowPlain", function(self)
     --	self.contents.countprefabs.spiderden = 1
     self.contents.countprefabs.green_mushroom = 1
 
-    self.contents.countprefabs.grass = 15
+    self.contents.countprefabs.grass = 25
     self.contents.countprefabs.sapling = 1
     self.contents.countprefabs.rabbithole = 4
     self.contents.countprefabs.berrybush = 1
@@ -245,10 +245,7 @@ end)
 
 FixRoom("DeepForest", function(self)
     self.tags = {}
-    self.required_prefabs = {"junk_pile_big"}
-
     self.random_node_entrance_weight = 0
-    self.contents.countstaticlayouts = RetreatSetpiece "junk_yard"
     self.contents.distributeprefabs.trees.prefabs = {"evergreen"}
     self.contents.countprefabs.spiderden_2 = 1
     self.contents.countprefabs.spiderden = 3
@@ -590,12 +587,11 @@ IslandRoomTask {
     value = WORLD_TILES.ROCKY,
     contents = {
         countprefabs = {
-            rock1 = 6,
-            rock2 = 5,
-            rock_flintless = 3,
+            rock1 = 8,
+            rock2 = 8,
+            rock_flintless = 5,
             meteorspawner = 1,
-            flint = 3,
-            shadowmeteor = 1
+            flint = 5
         }
     }
 }

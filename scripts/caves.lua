@@ -21,11 +21,11 @@ AddTaskSet(CAVE_NAME, {
     set_pieces = {
         ["ResurrectionStone"] = {
             count = 2,
-            tasks = {"MudLights", "RockyLand", "FungalNoiseForest", "RabbitTown", "CentipedeCaveTask"}
+            tasks = {"MudLights", "RockyLand", "FungalNoiseForest", "RabbitTown", "CentipedeCaveTask", "LichenLand"}
         },
         ["skeleton_notplayer"] = {
-            count = 1,
-            tasks = {"MudLights", "RockyLand", "FungalNoiseForest", "RabbitTown", "CentipedeCaveTask"}
+            count = 2,
+            tasks = {"MudLights", "RockyLand", "FungalNoiseForest", "RabbitTown", "CentipedeCaveTask", "LichenLand"}
         },
         ["TentaclePillarToAtrium"] = {
             count = 1,
