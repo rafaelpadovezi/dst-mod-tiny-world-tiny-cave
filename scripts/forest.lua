@@ -1,5 +1,9 @@
 local required_prefabs = {}
-local ocean_prefill_setpieces = {}
+local ocean_prefill_setpieces = {
+    ["BrinePool1"] = {
+        count = 1
+    }
+}
 local tasks = {}
 
 function env.IncludeTask(name, func)
@@ -63,7 +67,7 @@ AddLevel(LEVELTYPE.SURVIVAL, {
 
         -- OCEAN ITEMS
         --		ocean_bullkelp = "rare", 
-        --		ocean_otterdens = "rare", 
+        ocean_otterdens = "rare",
         ocean_wobsterden = "often",
 
         -- ALWAYS
@@ -118,14 +122,15 @@ FixRoom("Rocky", function(self)
     self.contents.countprefabs.meteorspawner = null
     self.contents.countprefabs.flint = 5
     self.contents.countprefabs.moon_altar_rock_idol = 1
-    self.contents.countprefabs.rock2 = 7
-    self.contents.countprefabs.rock_flintless = 9
+    self.contents.countprefabs.rock1 = 9
+    self.contents.countprefabs.rock2 = 9
+    self.contents.countprefabs.rock_flintless = 7
     self.contents.distributeprefabs.rock_ice = nil
     self.contents.countprefabs.burntground_faded = nil
 end)
 
 FixRoom("CritterDen", function(self)
-    self.contents.countprefabs.flint = 1
+    self.contents.countprefabs.flint = 3
     self.contents.countprefabs.oceantreenut = 1
 end)
 
@@ -148,6 +153,7 @@ FixRoom("DeepDeciduous", function(self)
     self.required_prefabs = {"resurrectionstone"}
     self.contents.countstaticlayouts = RetreatSetpiece "ResurrectionStone"
     self.random_node_exit_weight = 0
+    self.contents.countprefabs.flint = 3
 end)
 
 FixRoom("MagicalDeciduous", function(self)
@@ -169,7 +175,7 @@ FixRoom("MagicalDeciduous", function(self)
     self.contents.countprefabs.mushtree_medium = 2
     self.contents.countprefabs.mushtree_tall = 2
 
-    self.contents.countprefabs.grass = 1
+    self.contents.countprefabs.grass = 3
     self.contents.countprefabs.sapling = 1
     self.contents.countprefabs.berrybush = 1
 end)
@@ -194,6 +200,7 @@ FixRoom("WalrusHut_Grassy", function(self)
     self.contents.countprefabs.grass = 1
     self.contents.countprefabs.sapling = 1
     self.contents.countprefabs.walrus_camp = nil
+    self.contents.countprefabs.flint = 3
 end)
 
 ---------------------------------------------------
@@ -206,8 +213,7 @@ IncludeTask("For a nice walk", function(self)
     self.room_choices = {
         MandrakeHome = 1,
         BeefalowPlain = 1,
-        DeepForest = 1,
-        Forest = 1
+        DeepForest = 2
     }
 end)
 
@@ -220,7 +226,7 @@ FixRoom("MandrakeHome", function(self)
     self.contents.countprefabs.mandrake_planted = 3
 
     --	self.contents.countprefabs.berrybush = 1
-    self.contents.countprefabs.grass = 1
+    self.contents.countprefabs.grass = 3
     self.contents.countprefabs.sapling = 1
     self.contents.countprefabs.beehive = 1
     self.contents.countprefabs.wasphive = 1
@@ -250,7 +256,7 @@ FixRoom("DeepForest", function(self)
     self.contents.countprefabs.spiderden_2 = 1
     self.contents.countprefabs.spiderden = 3
     self.contents.countprefabs.berrybush = 1
-    self.contents.countprefabs.grass = 1
+    self.contents.countprefabs.grass = 3
     self.contents.countprefabs.sapling = 4
 end)
 
@@ -270,7 +276,7 @@ IncludeTask("Lightning Bluff", function(self)
 end)
 
 FixRoom("Badlands", function(self)
-    self.tags = {"sandstorm"}
+    -- self.tags = {"sandstorm"}
     self.required_prefabs = {"resurrectionstone"}
     self.contents.countstaticlayouts = RetreatSetpiece "ResurrectionStone"
     self.random_node_exit_weight = 0
@@ -308,13 +314,17 @@ FixRoom("LightningBluffAntlion", function(self)
             buzzardspawner = {{
                 x = 0,
                 y = 0
+            }},
+            antlion_spawner = {{
+                x = 0,
+                y = 0
             }}
         }
     })
 end)
 
 FixRoom("DragonflyArena", function(self)
-    self.tags = {"sandstorm"}
+    -- self.tags = {"sandstorm"}
     self.random_node_entrance_weight = 0
 end)
 
@@ -404,32 +414,9 @@ MakeSetpiece("www_rocky", {
     ground = {{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}
 })
 
-ocean_prefill_setpieces.www_monkeyqueen = {
+ocean_prefill_setpieces.MonkeyIslandSmall = {
     count = 1
 }
-MakeSetpiece("www_monkeyqueen", {
-    layout = {
-        monkeyqueen = {{
-            x = 0,
-            y = 0
-        }},
-        monkeypillar = {{
-            x = 0,
-            y = 1.75
-        }, {
-            x = 0,
-            y = -1.75
-        }, {
-            x = 1.75,
-            y = 0
-        }, {
-            x = -1.75,
-            y = 0
-        }}
-    },
-    ground_types = {WORLD_TILES.MONKEY_GROUND},
-    ground = {{0, 1, 1, 1, 0}, {1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {1, 1, 1, 1, 1}, {0, 1, 1, 1, 0}}
-})
 
 ocean_prefill_setpieces.www_lonermerm = {
     count = 1
@@ -598,3 +585,12 @@ IslandRoomTask {
 
 ---------------------------------------------------
 ---------------------------------------------------
+
+IslandRoomTask {
+    tags = {},
+    value = WORLD_TILES.ROCKY,
+    contents = {
+        countprefabs = {},
+        countstaticlayouts = RetreatSetpiece "junk_yard"
+    }
+}
