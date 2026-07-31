@@ -2,6 +2,9 @@ local required_prefabs = {}
 local ocean_prefill_setpieces = {
     ["BrinePool1"] = {
         count = 1
+    },
+    ["MonkeyIslandSmall"] = {
+        count = 1
     }
 }
 local tasks = {}
@@ -258,6 +261,7 @@ FixRoom("DeepForest", function(self)
     self.contents.countprefabs.berrybush = 1
     self.contents.countprefabs.grass = 3
     self.contents.countprefabs.sapling = 4
+    self.contents.countprefabs.pond = 1
 end)
 
 ---------------------------------------------------
