@@ -40,18 +40,13 @@ AddLevel(LEVELTYPE.SURVIVAL, {
     overrides = {
         world_size = "small",
         task_set = NAME,
-        --		loop = "never", 
 
         --  CLACISSISM
         prefabswaps_start = "classic",
         spawnprotection = "never",
         extrastartingitems = "none",
         seasonalstartingitems = "never",
-        -- specialevent = "none",
-
-        -- DERANDOMIZATION: SETPIECES
-        boons = "never",
-        --		touchstone = "never",
+        
         traps = "never",
         poi = "never",
         protected = "never",
@@ -77,7 +72,16 @@ AddLevel(LEVELTYPE.SURVIVAL, {
         hounds = "always",
         krampus = "always",
         liefs = "always",
-        pirateraids = "rare"
+        pirateraids = "rare",
+        wildfires = "never",
+        meteorshowers = "always",
+        antliontribute = "never",
+        grassgekkos = "never",
+        boons = "insane",
+        summerhounds = "never",
+        touchstone = "insane",
+        hound_mounds = "never",
+        angrybees = "never"
         -- squid = "always"
     }
 })
@@ -216,7 +220,8 @@ IncludeTask("For a nice walk", function(self)
     self.room_choices = {
         MandrakeHome = 1,
         BeefalowPlain = 1,
-        DeepForest = 2
+        Forest = 1,
+        DeepForest = 1,
     }
 end)
 
@@ -253,6 +258,19 @@ FixRoom("BeefalowPlain", function(self)
 end)
 
 FixRoom("DeepForest", function(self)
+    self.tags = {}
+    self.random_node_entrance_weight = 0
+    self.contents.distributeprefabs.trees.prefabs = {"evergreen"}
+    self.contents.countprefabs.spiderden_2 = 1
+    self.contents.countprefabs.spiderden = 3
+    self.contents.countprefabs.berrybush = 1
+    self.contents.countprefabs.grass = 3
+    self.contents.countprefabs.sapling = 4
+    self.contents.countprefabs.pond = 1
+    self.contents.countstaticlayouts = RetreatSetpiece "MooseNest"
+end)
+
+FixRoom("Forest", function(self)
     self.tags = {}
     self.random_node_entrance_weight = 0
     self.contents.distributeprefabs.trees.prefabs = {"evergreen"}
@@ -388,54 +406,21 @@ ocean_prefill_setpieces.HermitcrabIsland = {
     count = 1
 }
 
-ocean_prefill_setpieces.www_crabking = {
+Layouts.MonkeyIslandSmall.min_dist_from_land = 0
+
+table.insert(required_prefabs, "monkeyqueen")
+
+ocean_prefill_setpieces.CrabKing = {
     count = 1
 }
-MakeSetpiece("www_crabking", {
-    layout = {
-        crabking_spawner = {{
-            x = 0,
-            y = 0
-        }}
-    }
-})
-
-ocean_prefill_setpieces.www_rocky = {
-    count = 1
-}
-MakeSetpiece("www_rocky", {
-    layout = {
-        ancienttree_gem = {{
-            x = 0,
-            y = 0
-        }},
-        rocky = {{
-            x = 0,
-            y = 0
-        }}
-    },
-    ground_types = {WORLD_TILES.UNDERROCK},
-    ground = {{0, 1, 0}, {1, 1, 1}, {0, 1, 0}}
-})
-
-ocean_prefill_setpieces.MonkeyIslandSmall = {
+ocean_prefill_setpieces.OceanWhirlBigPortal = {
     count = 1
 }
 
-ocean_prefill_setpieces.www_lonermerm = {
-    count = 1
-}
-MakeSetpiece("www_lonermerm", {
-    layout = {
-        mermwatchtower = {{
-            x = 0,
-            y = 0
-        }}
-    },
-
-    ground_types = {WORLD_TILES.WOODFLOOR},
-    ground = {{1, 1}, {1, 1}}
-})
+-- Same reroll guard as monkeyqueen above: the FixRooms drop vanilla's
+-- required_prefabs, so without these a failed placement ships silently.
+table.insert(required_prefabs, "crabking_spawner")
+table.insert(required_prefabs, "oceanwhirlbigportal")
 
 ---------------------------------------------------
 ---------------------------------------------------

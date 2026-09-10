@@ -42,7 +42,16 @@ AddLevel(LEVELTYPE.SURVIVAL, {
 
     overrides = {
         world_size = "small",
-        task_set = CAVE_NAME
+        task_set = CAVE_NAME,
+
+        touchstone = "insane",
+        boons = "insane",
+
+        wormattacks = "never",
+        grassgekkos = "never",
+        monkey_setting = "never",
+        berrybush = "often",
+        slurper = "never"
     },
     background_node_range = {0, 1}
 })
