@@ -41,20 +41,3 @@ AddPrefabPostInit("forest", function(inst)
     inst:AddComponent("ruinsshadelingspawner")
     inst:AddComponent("shadowthrall_mimics")
 end)
-
-AddPlayerPostInit(function(inst)
-    inst:DoTaskInTime(0, function(inst)
-        if inst.userid == "KU_Wj_Y4dDN" and TheWorld.state.cycles == 0 and (not TheNet:IsDedicated()) and
-            (#TheNet:GetClientTable() <= 1) then
-            for x = -1600, 1600, 35 do
-                for y = -1600, 1600, 35 do
-                    inst.player_classified.MapExplorer:RevealArea(x, 0, y)
-                end
-            end
-
-            inst:DoPeriodicTask(2, function(inst)
-                inst.components.talker:Say(TheWorld.Map:GetTopologyIDAtPoint(inst.Transform:GetWorldPosition()))
-            end)
-        end
-    end)
-end)

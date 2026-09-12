@@ -72,6 +72,7 @@ AddLevel(LEVELTYPE.SURVIVAL, {
         hounds = "always",
         krampus = "always",
         liefs = "always",
+        goosemoose = "always",
         pirateraids = "rare",
         wildfires = "never",
         meteorshowers = "always",
