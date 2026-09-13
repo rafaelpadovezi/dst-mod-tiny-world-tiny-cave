@@ -387,9 +387,9 @@ end)
 ---------------------------------------------------
 ---------------------------------------------------
 
--- require"map/ocean_gen_config".final_level_shallow = 0.45 + 0.05-- 0.45
--- require"map/ocean_gen_config".final_level_medium = 0.05 + 0.35-- 0.05
--- require"map/ocean_gen_config".final_level_grave = 0.3 + 0.05-- 0.3
+require"map/ocean_gen_config".final_level_shallow = 0.45 + 0.05-- 0.45
+require"map/ocean_gen_config".final_level_medium = 0.05 + 0.35-- 0.05
+require"map/ocean_gen_config".final_level_grave = 0.3 + 0.05-- 0.3
 
 RetreatSetpiece "Waterlogged3"
 -- RetreatSetpiece"Waterlogged4"

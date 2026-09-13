@@ -340,6 +340,14 @@ AddLevelPreInit(NAME, function(self)
     end
 end)
 
+-- vanilla chains 4 shallow-ocean nodes between mainland and each region island;
+-- 2 keeps them islands but halves the water gap
+local StoryClass = require"map/storygen"
+local link_regions = StoryClass.LinkRegions
+StoryClass.LinkRegions = function(self, n1, n2, num_links, link_tile)
+    return link_regions(self, n1, n2, num_links or 2, link_tile)
+end
+
 local hacker = require "tools/upvaluehacker"
 local WORLDSETTINGS_GROUP = hacker.GetUpvalue(require"map/customize".GetWorldSettingsOptions, "WORLDSETTINGS_GROUP")
 

@@ -279,6 +279,30 @@ IncludeCaveTaskObj("RabbitTown", {
     }
 })
 
+FixRoom("CaveExitRoom", function(self)
+    self.contents.countprefabs.stalagmite_tall = 2
+    self.contents.countprefabs.stalagmite_tall_med = 1
+    self.contents.countprefabs.stalagmite_tall_low = 1
+end)
+
+FixRoom("RabbitArea", function(self)
+    self.contents.countprefabs.stalagmite = 2
+    self.contents.countprefabs.stalagmite_med = 1
+    self.contents.countprefabs.stalagmite_low = 1
+end)
+
+FixRoom("RabbitTown", function(self)
+    self.contents.countprefabs.stalagmite = 1
+    self.contents.countprefabs.stalagmite_med = 1
+    self.contents.countprefabs.stalagmite_low = 1
+end)
+
+FixRoom("BGSinkhole", function(self)
+    self.contents.countprefabs.stalagmite = 2
+    self.contents.countprefabs.stalagmite_med = 1
+    self.contents.countprefabs.stalagmite_low = 1
+end)
+
 IncludeCaveTaskObj("LichenLand", {
     locks = {LOCKS.TIER1},
     keys_given = {KEYS.TIER2, KEYS.RUINS},
