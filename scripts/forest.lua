@@ -237,7 +237,7 @@ FixRoom("MandrakeHome", function(self)
     --	self.contents.countprefabs.berrybush = 1
     self.contents.countprefabs.grass = 3
     self.contents.countprefabs.sapling = 1
-    self.contents.countprefabs.beehive = 1
+    self.contents.countprefabs.beehive = 2
     self.contents.countprefabs.wasphive = 1
     self.contents.countprefabs.walrus_camp = 1
 end)
@@ -472,7 +472,7 @@ end)
 ---------------------------------------------------
 ---------------------------------------------------
 
-IslandRoomTask {
+local lunar_island = IslandRoomTask {
     tags = {"lunacyarea", "moonhunt" --		"MushGnomeSpawnArea", 
     },
     value = WORLD_TILES.METEORCOAST_NOISE,
@@ -555,6 +555,15 @@ IslandRoomTask {
         }
     }
 }
+
+FixRoom("MoonIsland_Beach", function(self)
+    table.insert(self.tags, "lunacyarea")
+    table.insert(self.tags, "moonhunt")
+end)
+
+AddTaskPreInit(lunar_island, function(self)
+    self.room_choices["MoonIsland_Beach"] = 1
+end)
 
 ---------------------------------------------------
 ---------------------------------------------------
