@@ -12,22 +12,6 @@ if not TheNet:GetIsMasterSimulation() then
 end
 -----------------------------------------------------
 
-AddPrefabPostInit("antlion", function(inst)
-    overwrite(inst.components.trader, "onaccept", nil, function(inst, giver, item)
-        if item.components.tradable.goldvalue and (item.components.tradable.goldvalue > 1) then
-            if inst.pendingrewarditem == "townportaltalisman" then
-                inst.pendingrewarditem = {}
-            elseif inst.pendingrewarditem == nil then
-                inst.pendingrewarditem = {}
-            end
-
-            for i = 1, item.components.tradable.goldvalue do
-                table.insert(inst.pendingrewarditem, "rocks")
-            end
-        end
-    end)
-end)
-
 TUNING.ARCHIVE_RESONATOR.USES = 100
 
 AddPrefabPostInit("forest", function(inst)
