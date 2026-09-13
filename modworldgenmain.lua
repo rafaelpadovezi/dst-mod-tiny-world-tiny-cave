@@ -304,14 +304,16 @@ overwrite(env, "AddLevel", nil, function(type, data)
     if rawget(GLOBAL, "TheFrontEnd") then
         for _, screen_in_stack in pairs(TheFrontEnd.screenstack) do
             if screen_in_stack.name == "ServerCreationScreen" then
-                servercreationscreen = screen_in_stack
-                for k, v in pairs(servercreationscreen.world_tabs) do
-                    if v:GetCurrentLocation() == data.location then
-                        v.worldgen_widget:LoadPreset(data.id)
-                        v.worldgen_widget:Refresh()
-                        v.settings_widget:LoadPreset(data.id)
-                        v.settings_widget:Refresh()
-                        v:RefreshOptionItems()
+                for _, tab in pairs(screen_in_stack.world_tabs) do
+                    if tab:IsNewShard() and tab:GetCurrentLocation() == data.location then
+                        -- LoadPreset discards every option the user already changed on this tab
+                        for _, widget in ipairs {tab.worldgen_widget, tab.settings_widget} do
+                            if widget.settings and widget:GetNumberOfTweaks() == 0 then
+                                widget:LoadPreset(data.id)
+                                widget:Refresh()
+                            end
+                        end
+                        tab:RefreshOptionItems()
                     end
                 end
             end
@@ -343,27 +345,15 @@ local WORLDSETTINGS_GROUP = hacker.GetUpvalue(require"map/customize".GetWorldSet
 
 if WORLDSETTINGS_GROUP then
     for prefab, group in pairs {
-        rifts_frequency_cave = "misc",
-        rifts_enabled_cave = "misc",
-        atriumgate = "misc",
-
-        toadstool = "giants",
         daywalker = "giants",
 
         mushtree_regrowth = "resources",
         mushtree_moon_regrowth = "resources",
-        flower_cave_regrowth = "resources",
 
         itemmimics = "monsters",
         chest_mimics = "monsters",
-        molebats = "monsters",
-        nightmarecreatures = "monsters",
 
-        monkey_setting = "animals",
-        rocky_setting = "animals",
-        slurtles_setting = "animals",
-        mushgnome = "animals",
-        lightfliers = "animals"
+        mushgnome = "animals"
     } do
         if WORLDSETTINGS_GROUP[group] and WORLDSETTINGS_GROUP[group].items and WORLDSETTINGS_GROUP[group].items[prefab] and
             WORLDSETTINGS_GROUP[group].items[prefab].world then
